@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import SectionTwo from "./components/SectionTwo";
 import SectionThree from "./components/SectionThree";
+import SectionFour from "./components/SectionFour";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Hero />
       <SectionTwo />
       <SectionThree />
+      <SectionFour />
     </main>
   );
 }

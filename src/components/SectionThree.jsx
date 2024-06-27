@@ -32,8 +32,8 @@ export default function SectionThree() {
 
   const introTextOpacity = useTransform(
     scrollYProgress,
-    [0, 0.1, 0.2],
-    [0, 1, 0]
+    [0, 0.1, 0.2, 0.3],
+    [0, 1, 0.5, 0]
   );
   const servicesImageOpacity = useTransform(
     scrollYProgress,
@@ -43,36 +43,47 @@ export default function SectionThree() {
 
   const serviceOneOpacity = useTransform(
     scrollYProgress,
-    [0.1, 0.2, 0.3, 0.4],
-    [0, 0.5, 1, 0]
+    [0.1, 0.2, 0.3],
+    [0, 1, 0]
   );
   const serviceTwoOpacity = useTransform(
     scrollYProgress,
-    [0.4, 0.5, 0.6, 0.7],
-    [0, 0.5, 1, 0]
+    [0.3, 0.4, 0.5],
+    [0, 1, 0]
   );
 
   const serviceThreeOpacity = useTransform(
     scrollYProgress,
-    [0.7, 0.8, 0.9, 1],
-    [0, 0.5, 1, 0]
+    [0.5, 0.6, 0.7],
+    [0, 1, 0]
+  );
+
+  const serviceFourOpacity = useTransform(
+    scrollYProgress,
+    [0.7, 0.8, 0.9],
+    [0, 1, 0]
   );
 
   const xServiceOne = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.4, 0.5],
-    ["0%", "5%", "10%", "30%"]
+    [0.2, 0.3, 0.4],
+    ["0%", "10%", "20%"]
   );
   const xServiceTwo = useTransform(
     scrollYProgress,
-    [0.5, 0.6, 0.7, 0.8],
-    ["0%", "5%", "10%", "30%"]
+    [0.4, 0.5, 0.6],
+    ["0%", "10%", "20%"]
   );
 
   const xServiceThree = useTransform(
     scrollYProgress,
-    [0.7, 0.8, 0.9, 1],
-    ["0%", "5%", "10%", "30%"]
+    [0.6, 0.7, 0.8],
+    ["0%", "10%", "20%"]
+  );
+  const xServiceFour = useTransform(
+    scrollYProgress,
+    [0.8, 0.9, 1],
+    ["0%", "10%", "20%"]
   );
 
   const scrollBarYProgress = useTransform(
@@ -94,25 +105,20 @@ export default function SectionThree() {
 
   const scale = useTransform(
     scrollYProgress,
-    [
-      animationOrder.initial,
-      animationOrder.fadeInEnd,
-      animationOrder.showLoadingScreenEnd,
-      animationOrder.createBranchStart,
-    ],
-    [3, 1, 1, 0.5]
+    [0, 0.1, 0.2, 0.4],
+    [2, 1, 1, 0.5]
   );
 
   return (
     <section ref={targetRef}>
       <div className="relative h-[800vh] text-primaryTextColor">
-        <div className="sticky top-1/2 flex origin-center -translate-y-1/2 w-screen justify-center">
+        <div className="sticky -mb-64 top-1/2 flex origin-center -translate-y-1/2 w-screen justify-center">
           <img src={blackBg} alt="" className="w-full" />
         </div>
         {/* Services intro */}
-        <div className=" absolute text-9xl font-Anton flex items-center  w-full left-1/3 -top-24 -translate-x-1/2">
+        <div className=" absolute text-9xl font-Anton flex items-center  w-full left-1/2 -top-24 ">
           <motion.h3
-            style={{ opacity: introTextOpacity, x, scale }}
+            style={{ opacity: introTextOpacity, scale, x:"-50%" }}
             className=""
           >
             our services
@@ -147,7 +153,7 @@ export default function SectionThree() {
           {/* Services Contents */}
           {/* Service One */}
           <motion.div
-            className="absolute top-1/3 -right-[45vw] w-10/12"
+            className="absolute text-lightBlue top-1/3 -right-[45vw] w-10/12"
             style={{ opacity: serviceOneOpacity, x: xServiceOne }}
           >
             <h4 className="text-4xl font-Anton">
@@ -171,7 +177,29 @@ export default function SectionThree() {
             <h4 className="text-4xl font-Anton">Website Development</h4>
             <p className=" text-primaryTextColor/60">
               We create all types of beautiful web design, using cutting-edge
-              web development technologies.
+              web development technologies. We provide everything from domain
+              name purchases to domain hosting, website design, web hosting and
+              maintenance plans to suit your needs. We also offer a free
+              consultation for businesses looking to get started with a new
+              website or redesign an existing one.
+            </p>
+            <button className="px-8 py-1 bg-btnColor mt-3 rounded-md transition-all duration-300 ease-in-out hover:bg-darkBlue hover:text-lightBlue">
+              More
+            </button>
+          </motion.div>
+
+          {/* Service Three */}
+          <motion.div
+            className="absolute text-lightBlue top-1/3 -right-[45vw] w-10/12"
+            style={{ opacity: serviceThreeOpacity, x: xServiceThree }}
+          >
+            <h4 className="text-4xl font-Anton">Mobile Development</h4>
+            <p className=" text-primaryTextColor/60">
+              We provide mobile application development that can assist you with
+              anything from ideation and conceptualization to development,
+              testing, and deployment. Our experienced team of engineers and
+              designers will work with you to create your perfect app for both
+              Android and iOS.
             </p>
             <button className="px-8 py-1 bg-btnColor mt-3 rounded-md transition-all duration-300 ease-in-out hover:bg-darkBlue hover:text-lightBlue">
               More
@@ -181,13 +209,16 @@ export default function SectionThree() {
           {/* Service Three */}
           <motion.div
             className="absolute top-1/3 -right-[45vw] w-10/12"
-            style={{ opacity: serviceThreeOpacity, x: xServiceThree }}
+            style={{ opacity: serviceFourOpacity, x: xServiceFour }}
           >
-            <h4 className="text-4xl font-Anton">Mobile Development</h4>
+            <h4 className="text-4xl font-Anton">Digital Marketing</h4>
             <p className=" text-primaryTextColor/60">
-              We provide mobile application development that can assist you with
-              anything from ideation and conceptualization to development,
-              testing, and deployment.
+              We provide Digital Marketing Services to help your brand grow by
+              creating engaging campaigns for social media, increasing online
+              visibility through search engines, and reaching customers via
+              email markating. Our experts will develop a customzed Strategy to
+              fit your unique business needs and improve your campaigns to
+              ensure you get the most out of your investment.
             </p>
             <button className="px-8 py-1 bg-btnColor mt-3 rounded-md transition-all duration-300 ease-in-out hover:bg-darkBlue hover:text-lightBlue">
               More

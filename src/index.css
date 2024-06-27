@@ -6,11 +6,11 @@
 
 :root {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  
+
   font-family: Gabarito, sans-serif;
   line-height: 1.5;
   /* font-weight: 400; */
-  background-color:#050E2E;
+  background-color: #02042a;
 
   /* color-scheme: light dark; */
   /* color: rgba(255, 255, 255, 0.87); */
@@ -20,4 +20,15 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.teams-scroll-bar {
+}
+.teams-scroll-bar::-webkit-scrollbar {
+  width: 2px;
+  height: 1px;
+  background-color: transparent;
+}
+.teams-scroll-bar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 15px;
 }
