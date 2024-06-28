@@ -35,26 +35,35 @@ export default function SectionFour() {
     offset: ["start end", "end end"],
   });
 
+  const positionTeamsContainer = useTransform(scrollYProgress, (pos) => {
+    return pos === 1 ? "relative" : "sticky";
+  });
+  const positionTIntroText = useTransform(scrollYProgress, (pos) => {
+    return pos === 1 ? "relative" : "sticky";
+  });
+
   const introTextOpacity = useTransform(
     scrollYProgress,
-    [0, 0.1, 0.2],
-    [0, 1, 0]
+    [0, 0.1, 0.2, 1],
+    [0, 1, 1, 0.5]
   );
-  const x = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.2, 0.3],
-    ["0%", "55%", "70%", "100%"]
-  );
+
   const scaleIntroText = useTransform(
     scrollYProgress,
     [0, 0.1, 0.2, 0.4],
-    [2, 1, 1, 0]
+    [2, 1, 1, 0.9]
   );
 
   const scaleTeamsContainer = useTransform(
     scrollYProgress,
-    [0.4, 0.5, 0.6, 0.7],
-    [2, 1, 1, 0.9]
+    [0.1, 0.3, 0.9, 1],
+    [2, 1, 0.8, 0]
+  );
+
+  const xIntro = useTransform(
+    scrollYProgress,
+    [0.7, 0.8, 0.9, 1],
+    ["0%", "55%", "70%", "100%"]
   );
 
   const xTeamsContainer = useTransform(
@@ -70,26 +79,31 @@ export default function SectionFour() {
   );
   return (
     <section ref={targetRef}>
-      <div className="h-[400vh] flex items-center px-6 gap-7 ">
-        <div className=" fixed text-9xl font-Anton flex items-center  w-full left-1/3 top-96 -translate-x-1/2">
-          <motion.h3
-            style={{ opacity: introTextOpacity,x: "50%", scale: scaleIntroText }}
-            className="text-lightBlue "
-          >
-            Meet Our Team
-          </motion.h3>
-        </div>
+      <div className="h-[400vh] pt-10">
+        <motion.h3
+          style={{
+            opacity: introTextOpacity,
+            scale: scaleIntroText,
+            position: positionTIntroText,
+            x: xIntro,
+          }}
+          className="text-lightBlue top-20 text-9xl font-Anton text-center   "
+        >
+          Meet Our Team
+        </motion.h3>
+
         <motion.div
           style={{
             scale: scaleTeamsContainer,
             x: xTeamsContainer,
             opacity: opacityTeamsContainer,
-            y: "-50%",
+            y: "50%",
+            positionTeamsContainer,
           }}
-          className="sticky top-1/2 teams-scroll-bar flex  items-center gap-6"
+          className="sticky top-32  flex  items-center gap-6"
         >
           {/* One */}
-          <motion.div
+          <div
             //   style={{ opacity:  }}
             className=" text-darkBlue capitalize p-14 rounded-3xl  shadow-secondaryTextColor flex flex-col gap-3 text-center justify-center items-center bg-primaryTextColor/90 w-fit"
           >
@@ -113,7 +127,7 @@ export default function SectionFour() {
                 <CiTwitter className="absolute top-1/2 left-1/2 -translate-x-1/2 text-2xl -translate-y-1/2" />
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Two */}
           <div className=" text-darkBlue capitalize p-14 rounded-3xl  flex flex-col gap-3 text-center justify-center items-center bg-primaryTextColor/90 w-fit">

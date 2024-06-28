@@ -5,6 +5,8 @@ import Hero from "./components/Hero";
 import SectionTwo from "./components/SectionTwo";
 import SectionThree from "./components/SectionThree";
 import SectionFour from "./components/SectionFour";
+import SectionFive from "./components/SectionFive";
+import SectionFooter from "./components/SectionFooter";
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
       <SectionTwo />
       <SectionThree />
       <SectionFour />
+      <SectionFive />
+      <SectionFooter />
     </main>
   );
 }

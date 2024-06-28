@@ -23,12 +23,24 @@
 }
 .teams-scroll-bar {
 }
-.teams-scroll-bar::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 2px;
   height: 1px;
   background-color: transparent;
 }
-.teams-scroll-bar::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: 15px;
+}
+.scrolling-animation {
+  animation: scrolling 10s linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0vw);
+  }
+  100% {
+    transform: translateX(-180vw);
+  }
 }

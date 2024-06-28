@@ -30,11 +30,11 @@ export default function SectionThree() {
     offset: ["start end", "end end"],
   });
 
-  const introTextOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.2, 0.3],
-    [0, 1, 0.5, 0]
-  );
+  const position = useTransform(scrollYProgress, (pos) => {
+    return pos === 1 ? "relative" : "fixed";
+  });
+
+  const introTextOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
   const servicesImageOpacity = useTransform(
     scrollYProgress,
     [0.1, 0.3, 0.9, 1],
@@ -67,23 +67,23 @@ export default function SectionThree() {
   const xServiceOne = useTransform(
     scrollYProgress,
     [0.2, 0.3, 0.4],
-    ["0%", "10%", "20%"]
+    ["0%", "-10%", "-20%"]
   );
   const xServiceTwo = useTransform(
     scrollYProgress,
     [0.4, 0.5, 0.6],
-    ["0%", "10%", "20%"]
+    ["0%", "-10%", "-20%"]
   );
 
   const xServiceThree = useTransform(
     scrollYProgress,
     [0.6, 0.7, 0.8],
-    ["0%", "10%", "20%"]
+    ["0%", "-10%", "-20%"]
   );
   const xServiceFour = useTransform(
     scrollYProgress,
     [0.8, 0.9, 1],
-    ["0%", "10%", "20%"]
+    ["0%", "-10%", "-20%"]
   );
 
   const scrollBarYProgress = useTransform(
@@ -97,33 +97,27 @@ export default function SectionThree() {
     [0, 1, 1, 0]
   );
 
-  const x = useTransform(
+  const xIntro = useTransform(
     scrollYProgress,
-    [0, 0.1, 0.2, 0.3],
-    ["0%", "55%", "90%", "100%"]
+    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    ["0%", "10%", "15%", "20%", "25%", "30%", "35%", "40%", "45%", "50%", "55%"]
   );
 
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.2, 0.4],
-    [2, 1, 1, 0.5]
-  );
+  const scale = useTransform(scrollYProgress, [0, 0.1, 0.2, 1], [2, 1, 1, 0.8]);
 
   return (
-    <section ref={targetRef}>
+    <section ref={targetRef} className="bg-black pt-20">
       <div className="relative h-[800vh] text-primaryTextColor">
-        <div className="sticky -mb-64 top-1/2 flex origin-center -translate-y-1/2 w-screen justify-center">
+        {/* <div className="sticky -mb-64 top-1/2 flex origin-center -translate-y-1/2 w-screen justify-center">
           <img src={blackBg} alt="" className="w-full" />
-        </div>
+        </div> */}
         {/* Services intro */}
-        <div className=" absolute text-9xl font-Anton flex items-center  w-full left-1/2 -top-24 ">
-          <motion.h3
-            style={{ opacity: introTextOpacity, scale, x:"-50%" }}
-            className=""
-          >
-            our services
-          </motion.h3>
-        </div>
+        <motion.h3
+          style={{ opacity: introTextOpacity, scale, x: xIntro }}
+          className="sticky text-9xl font-Anton top-4 text-center "
+        >
+          our services
+        </motion.h3>
         <div className="sticky w-1/2 top-1/2 -translate-y-1/2">
           <motion.img
             style={{ opacity: servicesImageOpacity }}
@@ -153,10 +147,10 @@ export default function SectionThree() {
           {/* Services Contents */}
           {/* Service One */}
           <motion.div
-            className="absolute text-lightBlue top-1/3 -right-[45vw] w-10/12"
+            className="absolute  top-1/3 -right-[45vw] w-10/12"
             style={{ opacity: serviceOneOpacity, x: xServiceOne }}
           >
-            <h4 className="text-4xl font-Anton">
+            <h4 className="text-4xl font-Anton text-lightBlue">
               Software as a Service (Saas)
             </h4>
             <p className=" text-primaryTextColor/60">
@@ -190,10 +184,12 @@ export default function SectionThree() {
 
           {/* Service Three */}
           <motion.div
-            className="absolute text-lightBlue top-1/3 -right-[45vw] w-10/12"
+            className="absolute top-1/3 -right-[45vw] w-10/12"
             style={{ opacity: serviceThreeOpacity, x: xServiceThree }}
           >
-            <h4 className="text-4xl font-Anton">Mobile Development</h4>
+            <h4 className="text-4xl text-lightBlue  font-Anton">
+              Mobile Development
+            </h4>
             <p className=" text-primaryTextColor/60">
               We provide mobile application development that can assist you with
               anything from ideation and conceptualization to development,
